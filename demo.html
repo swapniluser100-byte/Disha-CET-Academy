@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Free Demo Class — Disha CET Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+        <div class="brand-mark">D</div>
+        <div>
+          <div class="brand-name">Disha CET Academy</div>
+          <div class="brand-sub">Class 11 · 12 · MHT-CET</div>
+        </div>
+      </a>
+    </div>
+    <nav class="links">
+      <a href="courses.html">Batches</a>
+      <a href="faculty.html">Faculty</a>
+      <a href="results.html">Results</a>
+      <a href="timetable.html">Timetable</a>
+      <a href="contact.html">Contact</a>
+      <a href="portal.html">Portal</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="portal.html" class="btn btn-ghost">Parent Login</a>
+      <a href="demo.html" class="btn btn-primary">Book free demo</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="sec-num">Free trial</div>
+    <h1>Book your free demo class</h1>
+    <p>Sit in on any subject, any batch — no charge, no obligation.</p>
+  </div>
+</div>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <h3 style="font-size:20px;margin-bottom:6px;">Demo class request</h3>
+          <p style="font-size:13.5px;color:var(--ink-soft);margin-bottom:20px;">We'll confirm your slot within 24 hours.</p>
+          <form id="demo-form">
+            <div class="field-row">
+              <div class="field"><label>Student name</label><input required type="text"></div>
+              <div class="field"><label>Parent's mobile</label><input required type="tel" pattern="[0-9]{10}"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Class</label>
+                <select><option>11th</option><option>12th</option><option>CET Repeater</option></select>
+              </div>
+              <div class="field"><label>Stream</label>
+                <select><option>PCM</option><option>PCB</option></select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Subject to sit in on</label>
+                <select><option>Physics</option><option>Chemistry</option><option>Maths</option><option>Biology</option></select>
+              </div>
+              <div class="field"><label>Preferred date</label><input type="date"></div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Book free demo class</button>
+            <div class="success-box" id="demo-success">Thanks — your demo class request has been received. Our counsellor will call you within 24 hours to confirm the slot.</div>
+            <p class="form-note">Submitting this form notifies the front-desk team by email and logs the enquiry against your batch of interest.</p>
+          </form>
+        </div>
+      </div>
+      <div class="demo-side">
+        <div class="sec-num">Why book a demo</div>
+        <h3>See the teaching before you commit</h3>
+        <ul class="why-list">
+          <li><span class="num-dot">1</span><span><b>No sign-up fee.</b> The trial class is free, for any batch, any subject.</span></li>
+          <li><span class="num-dot">2</span><span><b>Meet the actual faculty.</b> The teacher you see is the one who takes the full-year batch.</span></li>
+          <li><span class="num-dot">3</span><span><b>Counsellor call included.</b> We'll help you pick PCM vs PCB and the right batch timing.</span></li>
+        </ul>
+        <a href="courses.html" class="btn btn-ghost" style="margin-top:24px;">View batches &amp; fees first</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>Disha CET Academy</h5>
+        <p style="font-size:13.5px;color:#8890A6;max-width:34ch;">Junior college coaching for Class 11, 12 and MHT-CET — Nashik, Maharashtra.</p>
+      </div>
+      <div>
+        <h5>Institute</h5>
+        <ul><li><a href="courses.html">Batches &amp; fees</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="results.html">Results</a></li></ul>
+      </div>
+      <div>
+        <h5>Students</h5>
+        <ul><li><a href="demo.html">Book demo</a></li><li><a href="portal.html">Parent portal</a></li><li><a href="timetable.html">Timetable</a></li></ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul><li><a href="contact.html">admissions@dishacet.example.in</a></li><li>+91 98220 XXXXX</li><li>Nashik, Maharashtra</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Disha CET Academy. All rights reserved.</span>
+      <span>Prototype build — see chat for what's wired to real backend systems.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('demo-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('demo-success').classList.add('show');
+    this.querySelectorAll('button')[0].textContent = 'Request sent';
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent & Student Portal — Disha CET Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+        <div class="brand-mark">D</div>
+        <div>
+          <div class="brand-name">Disha CET Academy</div>
+          <div class="brand-sub">Class 11 · 12 · MHT-CET</div>
+        </div>
+      </a>
+    </div>
+    <nav class="links">
+      <a href="courses.html">Batches</a>
+      <a href="faculty.html">Faculty</a>
+      <a href="results.html">Results</a>
+      <a href="timetable.html">Timetable</a>
+      <a href="contact.html">Contact</a>
+      <a href="portal.html" class="active">Portal</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="portal.html" class="btn btn-ghost">Parent Login</a>
+      <a href="demo.html" class="btn btn-primary">Book free demo</a>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="sec-num">For enrolled families</div>
+    <h1>Parent &amp; student portal</h1>
+    <p>Check attendance, fee dues, test scores and the week's schedule — and raise a query straight to the front desk.</p>
+  </div>
+</div>
+
+<section id="portal-section">
+  <div class="wrap">
+    <div class="portal-shell">
+      <!-- LOGIN VIEW -->
+      <div class="portal-login" id="portal-login">
+        <h3>Log in</h3>
+        <p>Use your registered mobile number and portal PIN.</p>
+        <div class="demo-cred">Demo credentials — mobile: <b>9822012345</b>, PIN: <b>1234</b></div>
+        <div class="field"><label>Mobile number</label><input type="tel" id="login-mobile" placeholder="9822012345"></div>
+        <div class="field"><label>PIN</label><input type="password" id="login-pin" placeholder="4-digit PIN"></div>
+        <button class="btn btn-primary" style="width:100%;" onclick="doLogin()">Log in</button>
+        <p class="form-note" id="login-error" style="color:var(--brick);display:none;">Mobile number or PIN not recognised. Try the demo credentials above.</p>
+      </div>
+
+      <!-- DASHBOARD VIEW -->
+      <div class="portal-dash" id="portal-dash">
+        <div class="dash-top">
+          <h4>Welcome back, Om Deshpande — 12th PCM</h4>
+          <span class="logout-link" onclick="doLogout()">Log out</span>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-stat"><b>91%</b><span>Attendance this term</span></div>
+          <div class="dash-stat"><b>₹15,000</b><span>Fee due — Term 2</span></div>
+          <div class="dash-stat"><b>86%</b><span>Last CET mock score</span></div>
+          <div class="dash-stat"><b>3</b><span>Classes this week</span></div>
+        </div>
+        <div class="dash-body">
+          <div class="dash-section">
+            <h5>Fee status</h5>
+            <div class="fee-row paid">
+              <div><b>Term 1 — ₹37,500</b><span>Paid on 12 April 2026 · Receipt #DC-1042</span></div>
+              <span class="paid-tag">Paid</span>
+            </div>
+            <div class="fee-row">
+              <div><b>Term 2 — ₹15,000</b><span>Due 20 September 2026</span></div>
+              <button class="pay-btn" onclick="openPayModal()">Pay now</button>
+            </div>
+          </div>
+
+          <div class="dash-section">
+            <h5>Recent test scores</h5>
+            <div class="score-bar-row"><span class="subj">Physics</span><div class="score-bar-track"><div class="score-bar-fill" style="width:88%;"></div></div><span class="score-val">88%</span></div>
+            <div class="score-bar-row"><span class="subj">Chemistry</span><div class="score-bar-track"><div class="score-bar-fill" style="width:79%;"></div></div><span class="score-val">79%</span></div>
+            <div class="score-bar-row"><span class="subj">Maths</span><div class="score-bar-track"><div class="score-bar-fill" style="width:92%;"></div></div><span class="score-val">92%</span></div>
+            <div class="score-bar-row"><span class="subj">CET Mock</span><div class="score-bar-track"><div class="score-bar-fill" style="width:86%;"></div></div><span class="score-val">86%</span></div>
+          </div>
+
+          <div class="dash-section">
+            <h5>Upcoming schedule</h5>
+            <div class="schedule-row"><span class="day">Mon</span><span>Physics — Electrostatics, 6:30 AM</span></div>
+            <div class="schedule-row"><span class="day">Wed</span><span>Chemistry — Physical, 7:30 AM</span></div>
+            <div class="schedule-row"><span class="day">Sat</span><span>CET Full Mock Test, 8:00 AM</span></div>
+          </div>
+
+          <div class="dash-section" style="margin-bottom:0;">
+            <h5>Raise a query</h5>
+            <div class="ticket-layout">
+              <div>
+                <form id="ticket-form">
+                  <div class="field"><label>Subject</label><input required type="text" id="ticket-subject" placeholder="e.g. Fee receipt not received"></div>
+                  <div class="field"><label>Details</label><textarea rows="3" id="ticket-detail" placeholder="Describe your query"></textarea></div>
+                  <button type="submit" class="btn btn-primary">Submit query</button>
+                  <div class="success-box" id="ticket-success">Query submitted — ticket #DC-Q104 created. The front desk typically responds within one business day.</div>
+                </form>
+              </div>
+              <div>
+                <ul class="ticket-list" id="ticket-list">
+                  <li class="ticket-item">
+                    <div class="ticket-top"><b>Timetable clash with school exams</b><span class="status resolved">Resolved</span></div>
+                    <div class="ticket-meta">Ticket #DC-Q098 · Raised 2 Sept 2026</div>
+                  </li>
+                  <li class="ticket-item">
+                    <div class="ticket-top"><b>Request for extra Maths doubt session</b><span class="status progress">In progress</span></div>
+                    <div class="ticket-meta">Ticket #DC-Q101 · Raised 3 Sept 2026</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="pay-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closePayModal()">×</button>
+    <h3>Pay Term 2 fee</h3>
+    <p>Amount due: <b>₹15,000</b> for Om Deshpande, 12th PCM.</p>
+    <div class="upi-row">
+      <div class="upi-opt active">UPI</div>
+      <div class="upi-opt">Card</div>
+      <div class="upi-opt">Netbanking</div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;margin-top:18px;" onclick="mockPay()">Pay ₹15,000</button>
+    <div class="build-note">This checkout is a UI mock. In production this button hands off to a payment gateway (e.g. Razorpay) via a server-side order-creation call, then confirms the payment with a webhook before marking the fee as paid.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>Disha CET Academy</h5>
+        <p style="font-size:13.5px;color:#8890A6;max-width:34ch;">Junior college coaching for Class 11, 12 and MHT-CET — Nashik, Maharashtra.</p>
+      </div>
+      <div>
+        <h5>Institute</h5>
+        <ul><li><a href="courses.html">Batches &amp; fees</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="results.html">Results</a></li></ul>
+      </div>
+      <div>
+        <h5>Students</h5>
+        <ul><li><a href="demo.html">Book demo</a></li><li><a href="portal.html">Parent portal</a></li><li><a href="timetable.html">Timetable</a></li></ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul><li><a href="contact.html">admissions@dishacet.example.in</a></li><li>+91 98220 XXXXX</li><li>Nashik, Maharashtra</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Disha CET Academy. All rights reserved.</span>
+      <span>Prototype build — see chat for what's wired to real backend systems.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function doLogin(){
+    var mobile = document.getElementById('login-mobile').value.trim();
+    var pin = document.getElementById('login-pin').value.trim();
+    var err = document.getElementById('login-error');
+    if(mobile === '9822012345' && pin === '1234'){
+      document.getElementById('portal-login').classList.add('hide');
+      document.getElementById('portal-dash').classList.add('show');
+      err.style.display = 'none';
+    } else {
+      err.style.display = 'block';
+    }
+  }
+  function doLogout(){
+    document.getElementById('portal-login').classList.remove('hide');
+    document.getElementById('portal-dash').classList.remove('show');
+    document.getElementById('login-mobile').value = '';
+    document.getElementById('login-pin').value = '';
+  }
+
+  function openPayModal(){ document.getElementById('pay-modal').classList.add('show'); }
+  function closePayModal(){ document.getElementById('pay-modal').classList.remove('show'); }
+  function mockPay(){
+    closePayModal();
+    var row = document.querySelectorAll('.fee-row')[1];
+    row.classList.add('paid');
+    row.querySelector('button').outerHTML = '<span class="paid-tag">Paid</span>';
+  }
+  document.querySelectorAll('.upi-opt').forEach(function(el){
+    el.addEventListener('click', function(){
+      document.querySelectorAll('.upi-opt').forEach(o=>o.classList.remove('active'));
+      el.classList.add('active');
+    });
+  });
+
+  var ticketCounter = 105;
+  document.getElementById('ticket-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var subj = document.getElementById('ticket-subject').value || 'Query';
+    var list = document.getElementById('ticket-list');
+    var li = document.createElement('li');
+    li.className = 'ticket-item';
+    li.innerHTML = '<div class="ticket-top"><b>'+subj+'</b><span class="status open">Open</span></div>'+
+      '<div class="ticket-meta">Ticket #DC-Q'+(ticketCounter++)+' · Raised just now</div>';
+    list.insertBefore(li, list.firstChild);
+    document.getElementById('ticket-success').classList.add('show');
+    document.getElementById('ticket-subject').value = '';
+    document.getElementById('ticket-detail').value = '';
+  });
+</script>
+
+</body>
+</html>
