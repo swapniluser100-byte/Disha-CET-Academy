@@ -45,13 +45,12 @@ export default {
     }
 
     try {
-      // ASSUMPTION: table "customers" with columns unique_id, next_payment_due_date
-      // (stored as 'YYYY-MM-DD' text) and next_payment_due_amount (numeric).
-      // Adjust this query to match the actual schema in sitepragati-db.
-      const row = await env.DB
-        .prepare(
-          "SELECT next_payment_due_date, next_payment_due_amount FROM customers WHERE unique_id = ?"
-        )
+      // Table: customers (name assumed — adjust FROM clause if it's called something else).
+      // Confirmed columns: business_name, next_payment_due_date ('YYYY-MM-DD'), next_payment_due_amount.
+      // unique_id is expected to be added/populated by a separate script per your setup.
+      const row = await env.DB.prepare(
+        "SELECT business_name, next_payment_due_date, next_payment_due_amount FROM customers WHERE unique_id = ?",
+      )
         .bind(uniqueId)
         .first();
 
@@ -70,6 +69,7 @@ export default {
       return json({
         found: true,
         renewalRequired,
+        businessName: row.business_name,
         nextPaymentDueDate: dueDate,
         nextPaymentDueAmount: dueAmount,
       });
