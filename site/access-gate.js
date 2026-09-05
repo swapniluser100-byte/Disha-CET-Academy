@@ -4,7 +4,7 @@
 
   // TODO: replace with your deployed worker URL, e.g.
   // "https://disha-cet-access-check.YOUR-SUBDOMAIN.workers.dev/check-access"
-  var CHECK_URL = "https://disha-cet-access-check.swapniluser100.workers.dev";
+  var CHECK_URL = "https://disha-cet-access-check.YOUR-SUBDOMAIN.workers.dev/check-access";
 
   function overlay() {
     return document.getElementById("access-gate-overlay");
@@ -23,17 +23,14 @@
           : "") +
         "</div>";
     }
-    var intro =
-      detail && detail.businessName
-        ? "The subscription for " + detail.businessName + " is overdue."
-        : "This website's subscription payment is overdue.";
+    var intro = detail && detail.businessName
+      ? "The subscription for " + detail.businessName + " is overdue."
+      : "This website's subscription payment is overdue.";
     el.innerHTML =
       '<div style="max-width:440px;text-align:center;padding:32px;">' +
       '<div style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#E8A33D;margin-bottom:14px;">Site access</div>' +
-      "<div style=\"font-family:'Source Serif 4',serif;font-size:28px;color:#fff;margin-bottom:14px;\">Renewal required</div>" +
-      '<div style="font-size:14.5px;color:#C9CFDD;line-height:1.6;">' +
-      intro +
-      " Please contact SitePragati to renew access and restore the site.</div>" +
+      '<div style="font-family:\'Source Serif 4\',serif;font-size:28px;color:#fff;margin-bottom:14px;">Renewal required</div>' +
+      '<div style="font-size:14.5px;color:#C9CFDD;line-height:1.6;">' + intro + ' Please contact SitePragati to renew access and restore the site.</div>' +
       dueLine +
       "</div>";
     el.style.pointerEvents = "auto";

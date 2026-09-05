@@ -22,3 +22,4 @@
 
 -- Example:
 -- UPDATE customers SET unique_id = 'GzrMTOY0dCmV7br' WHERE id = 1;
+

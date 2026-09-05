@@ -48,9 +48,10 @@ export default {
       // Table: customers (name assumed — adjust FROM clause if it's called something else).
       // Confirmed columns: business_name, next_payment_due_date ('YYYY-MM-DD'), next_payment_due_amount.
       // unique_id is expected to be added/populated by a separate script per your setup.
-      const row = await env.DB.prepare(
-        "SELECT business_name, next_payment_due_date, next_payment_due_amount FROM customers WHERE unique_id = ?",
-      )
+      const row = await env.DB
+        .prepare(
+          "SELECT business_name, next_payment_due_date, next_payment_due_amount FROM customers WHERE unique_id = ?"
+        )
         .bind(uniqueId)
         .first();
 
